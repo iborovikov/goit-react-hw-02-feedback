@@ -1,23 +1,18 @@
 import styles from './Widget.module.css';
 import PropTypes from 'prop-types';
 
-const FeedbackOptions = ({ options }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 
     return (
         <div className={styles.btn_container}>
-            <button className={ styles.btn} onClick={options.goodFeedback}>Good</button>
-            <button className={ styles.btn} onClick={options.neutralFeedback}>Neutral</button>
-            <button className={ styles.btn} onClick={options.badFeedback}>Bad</button>
+            {options.map((option) => {
+                return (<button key={option} className={styles.btn} onClick={() => onLeaveFeedback(option)} >{option}</button>)
+            })}
         </div>
     )
-}
+};
 export default FeedbackOptions
 
 FeedbackOptions.propTypes = {
-    options: PropTypes.shape({
-        goodFeedback: PropTypes.func,
-        neutralFeedback: PropTypes.func,
-        badFeedback: PropTypes.func
-    })
-
-}
+    options: PropTypes.arrayOf(PropTypes.string)
+};
