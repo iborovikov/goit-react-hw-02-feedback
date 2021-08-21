@@ -17,7 +17,7 @@ const Statistics = ({ options, state, total, positivePercentage }) => {
 export default Statistics
 
 Statistics.propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.arrayOf(PropTypes.string.isRequired),
     state: PropTypes.shape({
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
